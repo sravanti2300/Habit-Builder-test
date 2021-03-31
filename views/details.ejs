@@ -27,8 +27,8 @@
                     <%}else{%>
                     <p class="col-lg-3">Building this forever</p>
                     <%}%>
-                    <p class="col-lg-3">Total Streaks : <%=i.streak%></p>
-                    <p class="col-lg-3">Weekly: <%=i.StreaksPerWeek%>  <%=i.time%></p>
+                    <p class="col-lg-3">Total Streaks : <%=i.streak%> Daily:<%=i.time%></p>
+                    <p class="col-lg-3">Each Week streaks: <%=i.StreaksPerWeek%> </p>
 
                     <p> <% if(i.TrackingStatus.length+indices[0]-1>=0  && indices[0]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[0]-1].status} %> <%= x %></p>
                 </div>
@@ -183,7 +183,11 @@
 
 let curr = new Date 
 let week = []
-
+var dateObj = new Date();
+var month1 = dateObj.getUTCMonth() + 1; //months from 1-12
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+newdate = year + "-" + month1 + "-" + day;
 for (let i = 1; i <= 7; i++) {
   let first = curr.getDate() - curr.getDay() + i 
   let day = new Date(curr.setDate(first)).toISOString().slice(0, 10)
@@ -192,7 +196,14 @@ for (let i = 1; i <= 7; i++) {
     var div = document.getElementById("weekname");
     var html = "";
     for (var i=0;i<week.length;i++) {
-        html+= "<li class='list-group-item day-name'>" + week[i] + "</li>";
+        value=week[i].split('-');
+
+        if(Number(year)==Number(value[0]) && Number(month1)== Number(value[1]) && Number(day)==Number(value[2])){
+        html+= "<li class='list-group-item day-name'><b>" + week[i] + "</b></li>";
+        }
+        else{
+            html+= "<li class='list-group-item day-name'>" + week[i] + "</li>";
+        }
     }
 
     div.innerHTML = html;
