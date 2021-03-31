@@ -1,6 +1,6 @@
-# Node.js & Passport Login
+#   Habit Builder
 
-This is a user login and registration app using Node.js, Express, Passport, Mongoose, EJS and some other packages.
+This is used to create habit and track weekly basis/
 
 ### Usage
 
