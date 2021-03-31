@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" href="/css/details.css">
+<!-- heading -->
+<div id="heading">
+
+    <h1>
+        Weekly Summary(<span id="month-name">All days details</span>)
+    </h1>
+ 
+ 
+</div>
+<!-- container for habits -->
+<div class="container rounded bg-white shadow p-3 mb-5" id="box">
+    <!-- list for habits -->
+    <div>
+
+        <ul class="list-group" id="habits">
+            <% var i=habit_details; %>
+            <li class="list-group-item list-group-item-info habit">
+                <div class="row habit-streak">
+                    <span id="habit-name"><h4><%= i.habit %></h4> </span>
+                    <%if(i.end!=""){ %>
+                    <p class="col-lg-3">Ending on : <%=i.end%></p>
+                    <%}else{%>
+                    <p class="col-lg-3">Building this forever</p>
+                    <%}%>
+                    <p class="col-lg-3">Total Streaks : <%=i.streak%></p>
+                    <p class="col-lg-3">Weekly: <%=i.StreaksPerWeek%>  <%=i.time%></p>
+                </div>
+                <!-- List to show the week days record -->
+
+
+                
+                <ul class ="week-days" id="WholeWeek">
+
+
+            <% for(var e =0; e <i.TrackingStatus.length;e++){ var each = i.TrackingStatus[e]; %>
+
+
+              
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%=e %>&date=<%=each.date%>" method="POST">
+                        <label class="control-label" style="border: thin red solid;"><%=each.Date %></label> : <button class="list-group-item days" type="submit"   <%if(each.date!=today){%> disabled <%}%>   >  <%=each.status %> </button>
+                    </form>
+
+         
+
+            <%}%> 
+                </ul>
+                
+            </li>
+            
+          </ul>
+    </div>
+
+</div>
+<!-- using moment js -->
+<script type="text/javascript" src="/js/moment.js"></script>
+<script type="text/javascript" src="/js/details.js"></script>
+

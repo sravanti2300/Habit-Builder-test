@@ -1,0 +1,8 @@
+/* making body margin 0 */
+body{
+    margin: 0;
+    text-align: center;
+    background-image: url('preview_47176.jpg');
+    background-color:rgba(0, 0, 0, 0.5);
+    
+}

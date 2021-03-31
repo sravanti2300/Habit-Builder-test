@@ -1,0 +1,204 @@
+
+<link rel="stylesheet" href="/css/details.css">
+<!-- heading -->
+
+<!-- container for habits -->
+<div class="container rounded bg-white shadow p-3 mb-5" id="box">
+    <div id="heading">
+
+        <h1>
+            Weekly Summary(<span id="month-name">July 2020</span>)
+        </h1>
+ 
+     
+    </div>
+    <!-- list for habits -->
+    <div>
+        <ul class="week-days" id="weekname">
+    
+        </ul>
+        <ul class="list-group" id="habits">
+            <%for(let i of habit_list){%>
+            <li class="list-group-item list-group-item-info habit">
+                <div class="row habit-streak">
+                    <span id="habit-name"><h4><%= i.habit %></h4> </span>
+                    <%if(i.end!=""){ %>
+                    <p class="col-lg-3">Ending on : <%=i.end%></p>
+                    <%}else{%>
+                    <p class="col-lg-3">Building this forever</p>
+                    <%}%>
+                    <p class="col-lg-3">Total Streaks : <%=i.streak%></p>
+                    <p class="col-lg-3">Weekly: <%=i.StreaksPerWeek%>  <%=i.time%></p>
+
+                    <p> <% if(i.TrackingStatus.length+indices[0]-1>=0  && indices[0]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[0]-1].status} %> <%= x %></p>
+                </div>
+                <!-- List to show the week days record -->
+                <ul class ="week-days" id="WholeWeek">
+
+
+
+
+                    <% if(i.days.one=="yes") {%>
+
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[0] %>&date=<%=week_list[0]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if( indices[0]!=0  ) {%> disabled  <%}%>  > <% var x=""; if(i.TrackingStatus.length+indices[0]-1>=0  && indices[0]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[0]-1].status} %> <%= x %></button>
+                    </form>
+
+                    <%}else {%>
+
+
+                     <button class="list-group-item days">Not included</button> 
+
+                    <%}%>
+
+
+
+
+
+                    <% if(i.days.two=="yes") {%>
+
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[1] %>&date=<%=week_list[1]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if( indices[1]!=0 ) {%> disabled  <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[1]-1>=0  && indices[1]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[1]-1].status} %> <%= x %> </button>
+                    </form>
+
+
+
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+
+                    <% if(i.days.three=="yes") {%>
+
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[2] %>&date=<%=week_list[2]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if(indices[2]!=0 ) {%> disabled <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[2]-1>=0  && indices[2]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[2]-1].status} %> <%= x %> </button>
+                    </form>
+
+
+                    
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+                <% if(i.days.four=="yes") {%>
+
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[3] %>&date=<%=week_list[3]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if(indices[3]!=0 ) {%> disabled <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[3]-1>=0  && indices[3]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[3]-1].status} %> <%= x %></button>
+                    </form>
+
+                    
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+
+                       <% if(i.days.five=="yes") {%>
+
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[4] %>&date=<%=week_list[4]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if( indices[4]!=0 ) {%> disabled <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[4]-1>=0  && indices[4]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[4]-1].status} %> <%= x %></button>
+                    </form>
+
+                    
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+                       <% if(i.days.six=="yes") {%>
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[5] %>&date=<%=week_list[5]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if(indices[5]!=0) {%> disabled <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[5]-1>=0  && indices[5]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[5]-1].status} %> <%= x %></button>
+                    </form>
+
+                    
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+
+
+                <% if(i.days.seven=="yes") {%>
+
+                    <form action="/details/update-habit/?id=<%=i._id%>&index=<%= indices[6] %>&date=<%=week_list[6]%>" method="POST">
+
+                       
+                        <button class="list-group-item days" type="submit" <% if( indices[6]!=0 ) {%> disabled <%}%> > <% var x=""; if(i.TrackingStatus.length+indices[6]-1>=0  && indices[6]<=0 ) { var x = i.TrackingStatus[i.TrackingStatus.length+indices[6]-1].status} %> <%= x %></button>
+                    </form>
+
+                    
+                    <%}else {%>
+
+
+                        <button class="list-group-item days">Not included</button> 
+   
+                       <%}%>
+
+
+                    
+                    
+                </ul>
+                
+            </li>
+            <%}%>
+          </ul>
+    </div>
+
+</div>
+<!-- using moment js -->
+<script type="text/javascript" src="/js/moment.js"></script>
+<script type="text/javascript" src="/js/details.js"></script>
+
+<script>
+
+let curr = new Date 
+let week = []
+
+for (let i = 1; i <= 7; i++) {
+  let first = curr.getDate() - curr.getDay() + i 
+  let day = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+  week.push(day)
+}
+    var div = document.getElementById("weekname");
+    var html = "";
+    for (var i=0;i<week.length;i++) {
+        html+= "<li class='list-group-item day-name'>" + week[i] + "</li>";
+    }
+
+    div.innerHTML = html;
+
+    var another = document.getElementById("WholeWeek")
+
+
+
+</script>
