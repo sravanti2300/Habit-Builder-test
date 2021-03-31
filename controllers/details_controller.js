@@ -1,4 +1,5 @@
 const Habit = require('../models/habits');
+const User = require('../models/User');
 const { json } = require('express');
 
 // controller got get details request
@@ -16,7 +17,7 @@ module.exports.details = function (req, res) {
 
 
 
-    console.log(req.user);
+    var IdString = req.user._id;
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
@@ -74,10 +75,10 @@ else{
             })
 
 
-            if (Rewardpoints && ((habits[i].streak) % (habits[i].StreaksPerWeek) == 1)) {
+            if (Rewardpoints && ((habits[i].streak) % (habits[i].StreaksPerWeek) == 1) && (habits[i].streak) > (habits[i].StreaksPerWeek)) {
 
 
-                var IdString = req.user._id;
+                
                 User.findOne({ _id: IdString }, function (err, docs) {
 
 
